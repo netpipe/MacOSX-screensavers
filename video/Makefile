@@ -1,4 +1,4 @@
-NAME   = main
+NAME   = VideoPlayer
 BUNDLE = $(NAME).saver
 ARCHS  = -arch arm64 -arch x86_64
 

@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDevelopmentRegion</key><string>en</string>
-    <key>CFBundleExecutable</key><string>NeonClock</string>
+    <key>CFBundleExecutable</key><string>VideoPlayer</string>
     <key>CFBundleIdentifier</key><string>com.example.neonclock</string>
     <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
     <key>CFBundleName</key><string>Neon Clock</string>
     <key>CFBundlePackageType</key><string>BNDL</string>
     <key>CFBundleShortVersionString</key><string>1.0</string>
     <key>CFBundleVersion</key><string>1</string>
-    <key>NSPrincipalClass</key><string>NeonClockView</string>
+    <key>NSPrincipalClass</key><string>VideoPlayerView</string>
 </dict>
 </plist>
