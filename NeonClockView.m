@@ -98,7 +98,7 @@ static const GLchar *kFragmentSource =
 "float ticks(vec2 p, float count, float r0, float r1, float w) {\n"
 "    float an  = atan(p.x, p.y);\n"                          // 0 at 12 o'clock
 "    float seg = (2.0 * PI) / count;\n"
-"    float a   = mod(an, seg) - 0.5 * seg;\n"                // fold onto nearest tick
+"    float a   = mod(an + 0.5 * seg, seg) - 0.5 * seg;\n"                // fold onto nearest tick
 "    vec2  q   = vec2(sin(a), cos(a)) * length(p);\n"
 "    return sdSegment(q, vec2(0.0, r0), vec2(0.0, r1)) - w;\n"
 "}\n"
@@ -247,9 +247,10 @@ if (px.width != _lastSize.width || px.height != _lastSize.height) {
     [_glContext update];
 }
 
-    NSDate *now = [NSDate date];
-    NSTimeInterval sinceMidnight =
-        [now timeIntervalSinceDate:[[NSCalendar currentCalendar] startOfDayForDate:now]];
+NSDate *now = [NSDate date];
+NSCalendar *calendar = [NSCalendar currentCalendar];
+NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:now];
+NSTimeInterval sinceMidnight = components.hour * 3600 + components.minute * 60 + components.second;
 
     glViewport(0, 0, (GLsizei)px.width, (GLsizei)px.height);
     glClearColor(0.0f, 0.0f, 0.02f, 1.0f);
